@@ -37,6 +37,7 @@ class GoogleStaticMapsVariable
 
 		$params['key'] = $settings->googleMapsApiKey;
 		$query = http_build_query($params, null, '&', PHP_QUERY_RFC3986);
+	    	$query = str_replace(["%3A","%257C","%3D","%26"],[":","%7C","=","&"],$query);
 
 		$partToSign = self::BASE_PATH . '?' . $query;
 
